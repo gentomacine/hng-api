@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema(
         github_file_url: {
             type: String
         },
-        github_repo: {
+        github_repo_url: {
             type: String
         },
     },
