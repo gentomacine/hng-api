@@ -60,7 +60,7 @@ export const getUserInfo = async (req, res) => {
       track: user.track,
       current_day: user.current_day,
       github_file_url: user.github_file_url,
-      github_repo_url: user.github_repo,
+      github_repo_url: user.github_repo_url,
       utc_time: formattedUtcTime, // Use the formatted date without milliseconds
       status_code: 200,
     });
