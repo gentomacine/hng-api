@@ -13,13 +13,14 @@ const userSchema = new mongoose.Schema(
         },
 
         currentDay: {
-            type: Date,
-            default: Date.now // Set the default value to the current date and time
+            type: String, // Change the field type to String
+            enum: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], // Use an enum to specify the days of the week
+            required: [true, "currentDay is needed"]
         },
 
         utcTime: {
             type: Date,
-            default: Date.now // Set the default value to the current date and time
+            default: Date.now // You can keep this field if needed
         },
 
         githubFileUrl: {
