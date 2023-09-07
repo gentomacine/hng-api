@@ -19,8 +19,9 @@ const userSchema = new mongoose.Schema(
         },
 
         utcTime: {
-            type: Date,
-            default: Date.now // You can keep this field if needed
+                type: Date,
+                default: Date.now,
+                get: (v) => v.toISOString() // Convert the Date to ISO8601 format
         },
 
         githubFileUrl: {

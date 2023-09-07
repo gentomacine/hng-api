@@ -49,13 +49,13 @@ export const getUserInfo = async (req, res) => {
       }
   
       res.status(200).json({
-        status: "success",
         slackname: user.slackname,
         track: user.track,
         currentDay: user.currentDay,
         githubFileUrl: user.githubFileUrl,
         githubRepo: user.githubRepo,
-        utcTime: user.utcTime
+        utcTime: user.utcTime,
+        status_code: 200
       });
     } catch (error) {
       // Handle errors and provide a more informative response
