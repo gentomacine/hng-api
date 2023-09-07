@@ -50,7 +50,12 @@ export const getUserInfo = async (req, res) => {
   
       res.status(200).json({
         status: "success",
-        data: user,
+        slackname: user.slackname,
+        track: user.track,
+        currentDay: user.currentDay,
+        githubFileUrl: user.githubFileUrl,
+        githubRepo: user.githubRepo,
+        utcTime: user.utcTime
       });
     } catch (error) {
       // Handle errors and provide a more informative response
