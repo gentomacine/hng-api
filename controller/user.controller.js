@@ -6,7 +6,7 @@ export const createUser = async (req, res) => {
     track,
     current_day,
     github_file_url,
-    github_repo,
+    github_repo_url,
     utc_time,
   } = req.body;
 
@@ -27,7 +27,7 @@ export const createUser = async (req, res) => {
       track,
       current_day,
       github_file_url,
-      github_repo,
+      github_repo_url,
       utc_time: parsedUtcTime, // Include the parsed UTC time
     });
 
@@ -60,7 +60,7 @@ export const getUserInfo = async (req, res) => {
       track: user.track,
       current_day: user.current_day,
       github_file_url: user.github_file_url,
-      github_repo: user.github_repo,
+      github_repo_url: user.github_repo,
       utc_time: formattedUtcTime, // Use the formatted date without milliseconds
       status_code: 200,
     });
