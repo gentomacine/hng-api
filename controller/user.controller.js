@@ -38,10 +38,6 @@ export const getUserInfo = async (req, res) => {
     // Find the user by their _id
     const user = await User.findById(userId);
 
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
     // Send the user's slackname and track in the response
     res.status(200).json({
       slackname: user.slackname,
