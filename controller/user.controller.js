@@ -4,8 +4,8 @@ export const createUser = async (req, res) => {
   const { slack_name, track, current_day, github_file_url, github_repo, utc_time} = req.body;
 
   try {
-    // Check if a user with the same slackname already exists
-    const foundUser = await User.findOne({ slackname });
+     // Check if a user with the same slackname already exists
+    const foundUser = await User.findOne({ slack_name });
 
     if (foundUser) {
       return res.json({ message: "User already exists" });
@@ -32,12 +32,12 @@ export const createUser = async (req, res) => {
 };
 
 export const getUserInfo = async (req, res) => {
-    const { slackname, track } = req.query; // Retrieve values from query parameters
+    const { slack_name, track } = req.query; // Retrieve values from query parameters
   
     try {
       // Create a query object with both conditions
       const query = {
-        slackname,
+        slack_name,
         track,
       };
   
