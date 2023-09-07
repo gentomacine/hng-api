@@ -1,7 +1,7 @@
 import User from "../model/user.model.js";
 
 export const createUser = async (req, res) => {
-  const { slackname, track, currentDay, githubFileUrl, githubRepo, utcTime} = req.body;
+  const { slack_name, track, current_day, github_file_url, github_repo, utc_time} = req.body;
 
   try {
     // Check if a user with the same slackname already exists
@@ -13,12 +13,12 @@ export const createUser = async (req, res) => {
 
     // Create a new user
     const newUser = await User.create({
-      slackname,
+      slack_name,
       track,
-      currentDay,
-      githubFileUrl,
-      githubRepo,
-      utcTime
+      current_day,
+      github_file_url,
+      github_repo,
+      utc_time
     });
 
     res.status(201).json({
@@ -49,12 +49,12 @@ export const getUserInfo = async (req, res) => {
       }
   
       res.status(200).json({
-        slackname: user.slackname,
+        slack_name: user.slack_name,
         track: user.track,
-        currentDay: user.currentDay,
-        githubFileUrl: user.githubFileUrl,
-        githubRepo: user.githubRepo,
-        utcTime: user.utcTime,
+        current_day: user.current_day,
+        github_file_url: user.github_file_url,
+        github_repo: user.github_repo,
+        utc_time: user.utc_time,
         status_code: 200
       });
     } catch (error) {

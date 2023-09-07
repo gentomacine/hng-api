@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
     {
-        slackname: {
+        slack_name: {
             type: String,
             required: [true, "slackname is needed"]
         },
@@ -12,22 +12,22 @@ const userSchema = new mongoose.Schema(
             required: [true, "track is needed"]
         },
 
-        currentDay: {
+        current_day: {
             type: String, // Change the field type to String
             enum: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], // Use an enum to specify the days of the week
             required: [true, "currentDay is needed"]
         },
 
-        utcTime: {
+        utc_time: {
                 type: Date,
                 default: Date.now,
                 get: (v) => v.toISOString() // Convert the Date to ISO8601 format
         },
 
-        githubFileUrl: {
+        github_file_url: {
             type: String
         },
-        githubRepo: {
+        github_repo: {
             type: String
         },
     },
