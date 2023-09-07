@@ -5,7 +5,7 @@ const userRoute = express.Router();
 
 //create user
 userRoute.post("/register", createUser);
-userRoute.get("/profile", getUserInfo)
+userRoute.get("/", getUserInfo)
 
 
 export default userRoute;
