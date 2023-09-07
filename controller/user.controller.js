@@ -32,23 +32,29 @@ export const createUser = async (req, res) => {
 };
 
 export const getUserInfo = async (req, res) => {
-  const userId = req.params.userId;
-
-  try {
-    // Find the user by their _id
-    const user = await User.findById(userId);
-
-    // Send the user's slackname and track in the response
-    res.status(200).json({
-      slackname: user.slackname,
-      track: user.track,
-      currentDay: user.currentDay,
-      githubFileUrl: user.githubFileUrl,
-      githubRepo: user.githubRepo,
-      utcTime: user.utcTime
-    });
-  } catch (error) {
-    // Handle errors and provide a more informative response
-    res.status(500).json({ message: error.message });
-  }
-};
+    const { slackname, track } = req.query; // Retrieve values from query parameters
+  
+    try {
+      // Create a query object with both conditions
+      const query = {
+        slackname,
+        track,
+      };
+  
+      // Find the user that matches both slackname and track criteria
+      const user = await User.findOne(query);
+  
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+  
+      res.status(200).json({
+        status: "success",
+        data: user,
+      });
+    } catch (error) {
+      // Handle errors and provide a more informative response
+      res.status(500).json({ message: error.message });
+    }
+  };
+  
