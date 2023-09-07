@@ -7,23 +7,27 @@ const userSchema = new mongoose.Schema(
             required: [true, "slackname is needed"]
         },
         
-       track:{
-        type:String,
-        required: [ true, "track is needed"]
-       },
+        track: {
+            type: String,
+            required: [true, "track is needed"]
+        },
 
-       currentDay:{
-        type: String,
-        
-       },
-       githubFileUrl:{
-        type:String
-       },
-       githubRepo:{
-        type:String
-       },
+        currentDay: {
+            type: Date,
+            default: Date.now // Set the default value to the current date and time
+        },
 
-       
+        utcTime: {
+            type: Date,
+            default: Date.now // Set the default value to the current date and time
+        },
+
+        githubFileUrl: {
+            type: String
+        },
+        githubRepo: {
+            type: String
+        },
     },
     {
         timestamps: true,
@@ -31,7 +35,6 @@ const userSchema = new mongoose.Schema(
     }
 );
 
-
-const User = mongoose.model("User", userSchema)
+const User = mongoose.model("User", userSchema);
 
 export default User;

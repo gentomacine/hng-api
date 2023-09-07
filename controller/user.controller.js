@@ -1,7 +1,7 @@
 import User from "../model/user.model.js";
 
 export const createUser = async (req, res) => {
-  const { slackname, track, currentDay, githubFileUrl, githubRepo } = req.body;
+  const { slackname, track, currentDay, githubFileUrl, githubRepo, utcTime} = req.body;
 
   try {
     // Check if a user with the same slackname already exists
@@ -18,6 +18,7 @@ export const createUser = async (req, res) => {
       currentDay,
       githubFileUrl,
       githubRepo,
+      utcTime
     });
 
     res.status(201).json({
