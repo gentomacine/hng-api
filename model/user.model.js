@@ -25,15 +25,14 @@ const userSchema = new mongoose.Schema(
       ],
       required: [true, "currentDay is needed"],
     },
-
     utc_time: {
-      type: Date,
-      default: Date.now,
-      get: function () {
-        const date = new Date(this.createdAt);
-        return new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, -1) + "Z";
+        type: Date,
+        default: Date.now,
+        get: function () {
+          const date = new Date(this.createdAt);
+          return new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, -5) + "Z";
+        },
       },
-    },
 
     github_file_url: {
       type: String,
