@@ -34,6 +34,8 @@ export const getUserInfo = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+    // Access the virtual property utc_time_now for current UTC time
+    const currentUtcTime = user.utc_time;
 
     res.status(200).json({
       slack_name: user.slack_name,
